@@ -183,6 +183,10 @@ input[type="reset"],
 input[type="submit"] {
   cursor: pointer;
   -webkit-appearance: button;
+    z-index: 1;
+    left: 29px;
+    top: 62px;
+    height: 26px;
 }
 
 button[disabled],
