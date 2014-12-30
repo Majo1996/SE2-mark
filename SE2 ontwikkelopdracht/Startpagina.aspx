@@ -31,7 +31,7 @@
         </div>
     <div style="display:inline-block;">
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="GridView1" runat="server" style="margin-left: 54px;"></asp:GridView>
+        <asp:GridView ID="GridView1" runat="server" style="margin-left: 54px;" DataSourceID="conn" Width="527px"></asp:GridView>
     </div>
 
 </asp:Content>
