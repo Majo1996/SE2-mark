@@ -41,6 +41,7 @@ namespace SE2_ontwikkelopdracht.Account
                     LogIn.Value = check;
                     // Add the cookie.
                     Response.Cookies.Add(LogIn);
+                    
                 }
                 //Create Session
                 Session["Login"] = UserName.Text;

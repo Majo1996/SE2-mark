@@ -26,7 +26,15 @@ namespace SE2_ontwikkelopdracht
 
         protected void btnPlaats_Click(object sender, EventArgs e)
         {
-            Response.Redirect("/default.aspx");
+            if(Session["LogIn"] != null)
+            {
+                Response.Redirect("/PlaatsAdvertentie.aspx");
+            }
+            else
+            {
+                System.Web.HttpContext.Current.Response.Write("<SCRIPT LANGUAGE=\"\"JavaScript\"\">alert(\"Log eerst in!\")</SCRIPT>");
+            }
+            
         }
 
         protected void btnZoek_Click(object sender, EventArgs e)
