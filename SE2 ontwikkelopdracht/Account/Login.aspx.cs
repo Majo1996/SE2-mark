@@ -25,22 +25,15 @@ namespace SE2_ontwikkelopdracht.Account
 
         protected void LogIn(object sender, EventArgs e)
         {
-            if (IsValid)
-            {
-                // Validate the user password
-                var manager = new UserManager();
-                ApplicationUser user = manager.Find(UserName.Text, Password.Text);
-                if (user != null)
+          
+               /*if(RememberMe.Checked == true)
                 {
-                    IdentityHelper.SignIn(manager, user, RememberMe.Checked);
-                    IdentityHelper.RedirectToReturnUrl(Request.QueryString["ReturnUrl"], Response);
+                        FormsAuthentication.SetAuthCookie(LoginControl.UserName.ToLower(), LoginControl.RememberMeSet);
                 }
-                else
-                {
-                    FailureText.Text = "Invalid username or password.";
-                    ErrorMessage.Visible = true;
-                }
-            }
+                    //Create Session
+                    Session["Login"] = LoginControl.UserName.ToLower();
+                    e.Authenticated = true;
+                */
         }
     }
 }

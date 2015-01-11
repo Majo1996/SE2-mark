@@ -49,3 +49,4 @@ C:\Users\Mark de Jong\Desktop\ICT\Periode 4.2\SE2\SE2 ontwikkelopdracht\SE2-mark
 C:\Users\Mark de Jong\Desktop\ICT\Periode 4.2\SE2\SE2 ontwikkelopdracht\SE2-mark\SE2 ontwikkelopdracht\obj\Debug\SE2 ontwikkelopdracht.csprojResolveAssemblyReference.cache
 C:\Users\Mark de Jong\Desktop\ICT\Periode 4.2\SE2\SE2 ontwikkelopdracht\SE2-mark\SE2 ontwikkelopdracht\obj\Debug\SE2 ontwikkelopdracht.dll
 C:\Users\Mark de Jong\Desktop\ICT\Periode 4.2\SE2\SE2 ontwikkelopdracht\SE2-mark\SE2 ontwikkelopdracht\obj\Debug\SE2 ontwikkelopdracht.pdb
+C:\Users\Mark de Jong\Desktop\ICT\Periode 4.2\SE2\SE2 ontwikkelopdracht\SE2-mark\SE2 ontwikkelopdracht\bin\Oracle.DataAccess.dll

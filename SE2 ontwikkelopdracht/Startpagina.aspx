@@ -1,8 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Startpagina.aspx.cs" Inherits="SE2_ontwikkelopdracht.Startpagina" %>
+﻿
+<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Startpagina.aspx.cs" Inherits="SE2_ontwikkelopdracht.Startpagina" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
         <div>
             <br />
-    <asp:Button ID="btnPlaats" runat="server" BorderColor="Gray" Text="Plaats advertentie" style="width: 200px; height: 45px;" />
+    <asp:Button ID="btnPlaats" runat="server" BorderColor="Gray" Text="Plaats advertentie" style="width: 200px; height: 45px;" OnClick="btnPlaats_Click" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
     <asp:TextBox ID="TextBox1" runat="server" style="width: 250px;"></asp:TextBox>
@@ -25,13 +26,23 @@
                 <li>Auto onderdelen</li>
                 <li>Keukengerei</li>
                 <li>Tuin gereedschap</li>
-                <li>Boeken</li>
             </ul>    
+            <ul>
+                <li>Boeken</li>
+            </ul>
         </asp:Panel>
         </div>
     <div style="display:inline-block;">
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <asp:GridView ID="GridView1" runat="server" style="margin-left: 54px;" DataSourceID="conn" Width="527px"></asp:GridView>
+            <asp:GridView ID="GridView1" runat="server" style="margin-left: 54px;" DataSourceID="Sqlgv1" Width="527px" AutoGenerateColumns="False" OnRowCommand="GridView1_RowCommand">
+            <Columns>
+                <asp:BoundField DataField="OMSCHRIJVING" HeaderText="OMSCHRIJVING" SortExpression="OMSCHRIJVING" />
+                <asp:BoundField DataField="VRAAGPRIJS" HeaderText="VRAAGPRIJS" SortExpression="VRAAGPRIJS" />
+                <asp:ButtonField Text="Bekijk de advertentie!" CommandName="GridView1_RowCommand" CausesValidation="True" >
+                <ItemStyle ForeColor="Black" />
+                </asp:ButtonField>
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="Sqlgv1" runat="server" ConnectionString="<%$ ConnectionStrings:ConnString %>" ProviderName="<%$ ConnectionStrings:ConnString.ProviderName %>" SelectCommand="SELECT &quot;OMSCHRIJVING&quot;, &quot;VRAAGPRIJS&quot; FROM &quot;ADVERTENTIE&quot; ORDER BY &quot;ADVERTENTIENR&quot; DESC"></asp:SqlDataSource>
     </div>
 
 </asp:Content>
