@@ -7,7 +7,7 @@ using Oracle.DataAccess.Client;
 using System.Web.Configuration;
 
 
-namespace SE2_ontwikkelopdracht.Account
+namespace SE2_ontwikkelopdracht
 {
     public class DatabaseClass
     {
@@ -81,18 +81,21 @@ namespace SE2_ontwikkelopdracht.Account
             {
                 Connectieopen();
 
-                OracleCommand cmd = new OracleCommand("SELECT MEDEWERKER from ACCOUNT WHERE EMAILADDRESS ='" + email + "' AND PASSWORD ='" + password + "'", connectie);
+                OracleCommand cmd = new OracleCommand("SELECT accountnr from ACCOUNT WHERE naam = :email AND wachtwoord = :password", connectie);
+                cmd.Parameters.Add(new OracleParameter("password", password));
+                cmd.Parameters.Add(new OracleParameter("email", email));
                 OracleDataReader reader = cmd.ExecuteReader();
                 OracleDataAdapter da = new OracleDataAdapter(cmd);
 
-                string medewerker;
+                string medewerker = "nope";
 
                 while (reader.Read())
                 {
 
-                    medewerker = Convert.ToString(reader["MEDEWERKER"]);
+                    medewerker = Convert.ToString(reader["accountnr"]);
 
                     return medewerker;
+                    
                 }
 
 
@@ -107,6 +110,62 @@ namespace SE2_ontwikkelopdracht.Account
                 connectie.Close();
             }
             return null;
+        }
+
+        public DataSet GetInfo(string zoekterm)
+        {
+
+            string sql = "SELECT OMSCHRIJVING, VRAAGPRIJS FROM ADVERTENTIE WHERE OMSCHRIJVING LIKE :zoekterm ORDER BY ADVERTENTIENR DESC"; 
+            
+            DataSet ds = new DataSet();
+
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                cmd.Parameters.Add(new OracleParameter("zoekterm", "%"+zoekterm+"%"));
+                OracleDataAdapter adapter = new OracleDataAdapter(cmd);
+                // Fill the DataSet.
+                adapter.Fill(ds);
+                return ds;
+
+            }
+            catch (OracleException e)
+            {        
+            }
+            finally
+            {
+                connectie.Close();
+            }
+            return ds;
+        }
+
+        public DataSet GetCat(string catnr)
+        {
+
+            string sql = "SELECT a.OMSCHRIJVING, a.VRAAGPRIJS FROM ADVERTENTIE a , CATEGORIE c WHERE c.categorienr = a.categorienr and c.categorienr = :catnr ORDER BY ADVERTENTIENR DESC";
+
+            DataSet ds = new DataSet();
+
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                cmd.Parameters.Add(new OracleParameter("catnr", catnr));
+                OracleDataAdapter adapter = new OracleDataAdapter(cmd);
+                // Fill the DataSet.
+                adapter.Fill(ds);
+                return ds;
+
+            }
+            catch (OracleException e)
+            {
+            }
+            finally
+            {
+                connectie.Close();
+            }
+            return ds;
         }
     }
 }

@@ -12,6 +12,8 @@ namespace SE2_ontwikkelopdracht.Account
 {
     public partial class Login : Page
     {
+
+        DatabaseClass db = new DatabaseClass();
         protected void Page_Load(object sender, EventArgs e)
         {
             RegisterHyperLink.NavigateUrl = "Register";
@@ -25,15 +27,25 @@ namespace SE2_ontwikkelopdracht.Account
 
         protected void LogIn(object sender, EventArgs e)
         {
-          
-               /*if(RememberMe.Checked == true)
+            string check = db.Logincheck(UserName.Text, Password.Text);
+            if (check == "nope")
+            {
+                Label1.Text = "Verkeerde gebruikers naam of wachtwoord";
+            }
+            else
+            {
+                if (RememberMe.Checked == true)
                 {
-                        FormsAuthentication.SetAuthCookie(LoginControl.UserName.ToLower(), LoginControl.RememberMeSet);
+                    HttpCookie LogIn = new HttpCookie("LogIn");
+                    // Set the cookie value.
+                    LogIn.Value = check;
+                    // Add the cookie.
+                    Response.Cookies.Add(LogIn);
                 }
-                    //Create Session
-                    Session["Login"] = LoginControl.UserName.ToLower();
-                    e.Authenticated = true;
-                */
+                //Create Session
+                Session["Login"] = UserName.Text;
+                Response.Redirect("/Startpagina.aspx");
+            }
         }
     }
 }

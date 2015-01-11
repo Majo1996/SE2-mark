@@ -214,7 +214,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account\DatabaseClass.cs" />
+    <Compile Include="DatabaseClass.cs" />
     <Compile Include="Account\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

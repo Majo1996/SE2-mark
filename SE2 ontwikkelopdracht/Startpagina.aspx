@@ -9,10 +9,8 @@
     <asp:TextBox ID="TextBox1" runat="server" style="width: 250px;"></asp:TextBox>
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;
-    <asp:DropDownList ID="DropDownList1" runat="server" style="width: 160px;">
-    </asp:DropDownList>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnZoek" runat="server" Text="Zoek" style="width: 100px;" />
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <asp:Button ID="btnZoek" runat="server" Text="Zoek" style="width: 100px;" OnClick="btnZoek_Click" />
 &nbsp;&nbsp;&nbsp; 
             </div>
         <hr />
@@ -22,13 +20,11 @@
             <p>
                 &nbsp;</p>
             <ul>
-              <li> <asp:Label ID="lblAuto" runat="server">Auto's</asp:Label> </li>
-                <li>Auto onderdelen</li>
-                <li>Keukengerei</li>
-                <li>Tuin gereedschap</li>
-            </ul>    
-            <ul>
-                <li>Boeken</li>
+              <li> <asp:LinkButton ID="lblAuto" runat="server" OnClick="lblAuto_Click">Voertuigen</asp:LinkButton> </li>
+                <li><asp:LinkButton ID="lblOnderdelen" runat="server" OnClick="lblOnderdelen_Click">Auto onderdelen</asp:LinkButton></li>
+                <li><asp:LinkButton ID="lblKeuken" runat="server" OnClick="lblKeuken_Click">Keukengerei</asp:LinkButton></li>
+                <li><asp:LinkButton ID="lblTuin" runat="server" OnClick="lblTuin_Click">Tuin gereedschap</asp:LinkButton></li>          
+                <li><asp:LinkButton ID="lblBoek" runat="server" OnClick="lblBoek_Click">Boeken</asp:LinkButton></li>
             </ul>
         </asp:Panel>
         </div>
