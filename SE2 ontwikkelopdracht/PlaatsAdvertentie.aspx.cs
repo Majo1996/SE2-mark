@@ -17,21 +17,31 @@ namespace SE2_ontwikkelopdracht
 
         protected void btnSave_Click(object sender, EventArgs e)
         {
+            string path = @"C:\Users\Mark de Jong\Dropbox\";
             if(DropDownList1.Text != "Categorie" && TextBox1.Text != null && TextBox2.Text != null)
             {
                 db.InsertAdv(Convert.ToString(catCheck(DropDownList1.SelectedValue)), Request.Cookies["LogIn"].Value, TextBox1.Text, TextBox2.Text);
                 List<string> URLS = new List<string>();
                 if(FileUpload1.FileName != "")
                 {
-                    URLS.Add(FileUpload1.FileName);
+                    
+                    path += FileUpload1.FileName;
+                    FileUpload1.SaveAs(path);
+                    URLS.Add(path);
                 }
                 if (FileUpload2.FileName != "")
                 {
-                    URLS.Add(FileUpload2.FileName);
+                    
+                    path += FileUpload2.FileName;
+                    FileUpload2.SaveAs(path);
+                    URLS.Add(path);
                 }
                 if (FileUpload3.FileName != "")
                 {
-                    URLS.Add(FileUpload3.FileName);
+                    
+                    path += FileUpload2.FileName;
+                    FileUpload2.SaveAs(path);
+                    URLS.Add(path);
                 }
 
                 foreach(string s in URLS)

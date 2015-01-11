@@ -33,7 +33,7 @@
             <Columns>
                 <asp:BoundField DataField="OMSCHRIJVING" HeaderText="OMSCHRIJVING" SortExpression="OMSCHRIJVING" />
                 <asp:BoundField DataField="VRAAGPRIJS" HeaderText="VRAAGPRIJS" SortExpression="VRAAGPRIJS" />
-                <asp:ButtonField Text="Bekijk de advertentie!" CommandName="GridView1_RowCommand" CausesValidation="True" >
+                <asp:ButtonField Text="Bekijk de advertentie!" CommandName="GridView1_RowCommand" CausesValidation="True">
                 <ItemStyle ForeColor="Black" />
                 </asp:ButtonField>
             </Columns>

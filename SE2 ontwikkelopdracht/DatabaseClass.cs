@@ -272,5 +272,31 @@ namespace SE2_ontwikkelopdracht
                 connectie.Close();
             }
         }
+        public List<string> GetURL(string advnr)
+        {
+            List<string> urls = new List<string>();
+            string sql = "SELECT URLLINK FROM FOTO WHERE ADVERTENTIENR = :advnr";
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                cmd.Parameters.Add(new OracleParameter("advnr", advnr));
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    urls.Add(Convert.ToString(reader["URLLINK"]));
+
+                }
+                return urls;
+            }
+            catch (OracleException ex)
+            {
+
+            }
+            finally { connectie.Close(); }
+            return urls;
+        }
+        
     }
 }

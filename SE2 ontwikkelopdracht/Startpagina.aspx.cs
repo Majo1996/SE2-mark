@@ -18,10 +18,12 @@ namespace SE2_ontwikkelopdracht
         {
         }
 
-        protected void GridView1_RowCommand(object sender, EventArgs e)
+        protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-           
-            Response.Redirect("/Default.aspx");
+            int rowIndex = Convert.ToInt32(e.CommandArgument);
+            int temp = db.GetAdvNr() - rowIndex;
+            Session["AdvNr"] = temp;
+            Response.Redirect("/Advertentie.aspx");
         }
 
         protected void btnPlaats_Click(object sender, EventArgs e)
