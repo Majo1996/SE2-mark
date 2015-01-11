@@ -275,6 +275,7 @@ namespace SE2_ontwikkelopdracht
         public List<string> GetURL(string advnr)
         {
             List<string> urls = new List<string>();
+            int teller = 0;
             string sql = "SELECT URLLINK FROM FOTO WHERE ADVERTENTIENR = :advnr";
             try
             {
@@ -283,9 +284,15 @@ namespace SE2_ontwikkelopdracht
                 cmd.Parameters.Add(new OracleParameter("advnr", advnr));
                 OracleDataReader reader = cmd.ExecuteReader();
 
-                while (reader.Read())
+                while (teller <=3)
                 {
-                    urls.Add(Convert.ToString(reader["URLLINK"]));
+                    while (reader.Read())
+                    {
+                        urls.Add(Convert.ToString(reader["URLLINK"]));
+                        teller++;
+                    }
+                    urls.Add("");
+                    teller++;
 
                 }
                 return urls;
@@ -297,6 +304,80 @@ namespace SE2_ontwikkelopdracht
             finally { connectie.Close(); }
             return urls;
         }
+
+        public string GetOmschrijving(string advnr)
+        {
+            string temp = "";
+            string sql = "SELECT OMSCHRIJVING, VRAAGPRIJS FROM ADVERTENTIE WHERE ADVERTENTIENR = :advnr";
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                cmd.Parameters.Add(new OracleParameter("advnr", advnr));
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    temp = "Vraagprijs: " + reader["VRAAGPRIJS"].ToString() + Environment.NewLine + Environment.NewLine + reader["OMSCHRIJVING"].ToString();
+
+                }
+                return temp;
+            }
+            catch (OracleException ex)
+            {
+
+            }
+            finally { connectie.Close(); }
+            return temp;
+        }
+        public int bodNr()
+        {
+            int temp = 1;
+            string sql = "SELECT MAX(BODNR) AS BODNR FROM BOD";
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                OracleDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    temp = Convert.ToInt32(reader["BODNR"]);
+                }
+                return temp;
+            }
+            catch(OracleException ex)
+            {}
+            finally
+            {
+                connectie.Close();
+            }
+            return temp;
+
+            
+        }
+        public void Bied(string accnr, string advnr, string bedrag)
+        {
+            int bodnr = bodNr() + 1;
+            string sql = "INSERT INTO BOD VALUES(:bodnr, :accnr, :advnr, :bedrag)";
+            try
+            {
+                Connectieopen();
+                OracleCommand cmd = new OracleCommand(sql, connectie);
+                cmd.Parameters.Add(new OracleParameter("bodnr", bodnr));
+                cmd.Parameters.Add(new OracleParameter("accnr", accnr));
+                cmd.Parameters.Add(new OracleParameter("advnr", advnr));
+                cmd.Parameters.Add(new OracleParameter("bedrag", bedrag));
+                cmd.ExecuteNonQuery();
+            }
+            catch(OracleException ex)
+            {}
+            finally
+            {
+                connectie.Close();
+            }
+        }
+        
         
     }
 }

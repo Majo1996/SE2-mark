@@ -16,26 +16,26 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; €
     <asp:TextBox ID="TextBox2" runat="server" TextMode="Number"></asp:TextBox>
     ,-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Sla advertentie op!" />
-    <br />
+<asp:Button ID="btnSave" runat="server" OnClick="btnSave_Click" Text="Sla advertentie op!" />
+<br />
     <br />
     <asp:Label ID="Label1" runat="server" Text="Omschrijving"></asp:Label>
     <br />
     <br />
     <asp:TextBox ID="TextBox1" runat="server" Height="168px" Width="301px" TextMode="MultiLine" MaxLength="255"></asp:TextBox>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+<br />
+<br />
+Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <br />
     <br />
-    Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<asp:FileUpload ID="FileUpload1" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
     <br />
+Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br />
+<asp:FileUpload ID="FileUpload2" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
     <br />
-    <asp:FileUpload ID="FileUpload1" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
-    <br />
-    Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <br />
-    <asp:FileUpload ID="FileUpload2" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
-    <br />
-    Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Foto&#39;s&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <script type ="text/javascript">
         var validFiles = ["png", "jpg", "jpeg"];
         function CheckExt(obj) {
@@ -51,6 +51,6 @@
         }
     </script>
 &nbsp;&nbsp;&nbsp; 
-    <br />
-    <asp:FileUpload ID="FileUpload3" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
+<br />
+<asp:FileUpload ID="FileUpload3" runat="server" Height="31px" Width="302px" onchange ="CheckExt(this)"/>
     </asp:Content>
